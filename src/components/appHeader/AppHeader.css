@@ -1,0 +1,18 @@
+.colorChange{
+    color: #9F0013;
+
+}
+
+.logo-block{
+    font-family: 'Roboto Condensed';font-size: 28px;
+    font-weight: bold;
+}
+
+.nav-bar{
+    font-family: 'Roboto Condensed';font-size: 28px; font-weight: bold;
+}
+header{
+    display: flex;
+    justify-content: space-between;
+        margin: 55px 170px 0 170px;
+}
