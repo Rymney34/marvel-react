@@ -1,0 +1,72 @@
+.bannerBlock{
+    border: 1px solid black;
+    display: flex;
+
+    width: 80vw;
+    height: 250px;
+}
+
+.bannerWrapper{
+    display: flex;
+    justify-content: center;
+}
+
+.randomInfoBlock{
+    display: flex;
+    border: 1px solid black;
+    width: 50%;
+}
+
+.randomCTABlock{
+    border: 1px solid black;
+     width: 50%;
+}
+
+.charDetails{
+    width: 60%;
+}
+
+.charImg{
+    width: 180px;
+    height: 180px;
+    margin: 35px 30px 35px 40px
+    
+}
+
+.charName{
+    font-size: 24px;
+    font-family: 'Roboto Condensed';
+    text-transform: uppercase;
+    margin: 35px 0px 14px 0px
+    
+}
+
+.charDesc{
+     font-family: 'Roboto Condensed';
+     font-size: 14px;
+     margin: 0;
+     height:95px;
+}
+
+.buttonsBlock{
+    border: 1px solid black;
+}
+
+.randomCTABlock{
+    background-color: #232222;
+}
+
+.randomCTABlock>p{
+    color: #FFFFFF;
+    font-family: 'Roboto Condensed';
+    font-size: 24px;
+    width: 374px;
+    margin: 35px 0px 0px 40px
+}
+
+.buttonTry{
+    border: 1px solid black;
+    height: 38px;
+    width: 100px;
+    margin: 13px 0px 0px 35px
+}
