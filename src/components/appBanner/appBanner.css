@@ -1,9 +1,10 @@
 .bannerBlock{
-    border: 1px solid black;
+    
     display: flex;
 
     width: 80vw;
     height: 250px;
+    box-shadow: 10px 9px 8px rgb(211, 211, 211);
 }
 
 .bannerWrapper{
@@ -13,14 +14,11 @@
 
 .randomInfoBlock{
     display: flex;
-    border: 1px solid black;
+    
     width: 50%;
 }
 
-.randomCTABlock{
-    border: 1px solid black;
-     width: 50%;
-}
+
 
 .charDetails{
     width: 60%;
@@ -45,28 +43,37 @@
      font-family: 'Roboto Condensed';
      font-size: 14px;
      margin: 0;
-     height:95px;
+     height:92px;
 }
 
 .buttonsBlock{
-    border: 1px solid black;
+    margin:0;
+    
+    display: flex; 
+   
+
 }
 
-.randomCTABlock{
+.randomCTAWrapper{
     background-color: #232222;
+    display: flex;
+    border: 1px solid black;
+     width: 50%;
 }
 
 .randomCTABlock>p{
     color: #FFFFFF;
     font-family: 'Roboto Condensed';
     font-size: 24px;
+    font-weight: bold;
     width: 374px;
     margin: 35px 0px 0px 40px
 }
 
-.buttonTry{
-    border: 1px solid black;
-    height: 38px;
-    width: 100px;
-    margin: 13px 0px 0px 35px
+
+
+.decorImg{
+    z-index: -1;
+    margin: 50px 0 00px 0px
 }
+
