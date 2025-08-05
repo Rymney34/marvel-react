@@ -1,9 +1,21 @@
 import SingleChar from "../singleChar/singleChar"
+import './charList.css'
 
 const CharList = () => {
     return(
         <div className="charListWrap"> 
-            <SingleChar/>
+            <div className="listCharBlock">
+                <SingleChar/>
+                <SingleChar/>
+                <SingleChar/>
+                <SingleChar/>
+                <SingleChar/>
+                <SingleChar/>
+                <SingleChar/>
+                <SingleChar/>
+                <SingleChar/>
+            </div>
+            
         </div>
     )
 }

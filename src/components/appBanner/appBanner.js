@@ -21,8 +21,8 @@ const AppBanner = () => {
                         </p>
                         <div className="buttonsBlock">
                             
-                                <Button1 style={{margin: '-17px 0 -35px -40px'}} text='homepage'/>
-                           <Button1  style={{backgroundColor:'#5C5C5C', margin: '-17px 0 -35px -40px'}} text='wiki'/>
+                                <Button1 style={{margin: '0px 0 -35px -40px'}} text='homepage'/>
+                           <Button1  style={{backgroundColor:'#5C5C5C', margin: '0px 0 -35px -40px'}} text='wiki'/>
                             
                         </div>
                     </div>
@@ -39,14 +39,14 @@ const AppBanner = () => {
                         <p>
                             Or choose another one
                         </p>
-                            <div className="button1">
+                            <div className="buttonSt">
                                 <Button1 text='try it'/>
                             </div>
+
                     </div>
-                    
-                    <div className="imageBlock">
-                        <img className="decorImg" src={imgB} alt='decoration'/>
-                    </div>
+                    <img className="decorImg" src={imgB} alt='decoration'/>
+                     
+                  
                     </div>
                    
                     

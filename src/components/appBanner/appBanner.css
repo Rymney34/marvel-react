@@ -2,7 +2,7 @@
     
     display: flex;
 
-    width: 80vw;
+    width: 1100px;
     height: 250px;
     box-shadow: 10px 9px 8px rgb(211, 211, 211);
 }
@@ -44,19 +44,21 @@
      font-size: 14px;
      margin: 0;
      height:92px;
+     width: 265px;
 }
 
 .buttonsBlock{
-    margin:0;
-    
+   
+    margin-top: 5px;
     display: flex; 
+
    
 
 }
 
 .randomCTAWrapper{
     background-color: #232222;
-    display: flex;
+   display: flex;
     border: 1px solid black;
      width: 50%;
 }
@@ -68,12 +70,27 @@
     font-weight: bold;
     width: 374px;
     margin: 35px 0px 0px 40px
+
 }
 
+.randomCTABlock{
+    display: flex;
+    flex-direction: column;
+}
 
 
 .decorImg{
-    z-index: -1;
-    margin: 50px 0 00px 0px
+  
+    margin: 50px 0px 0px 390px;
+     position: absolute;
+    
 }
 
+.imageBlock{
+    margin-right: 300px;
+    
+}
+
+.buttonSt{
+    margin-top: 13px;
+}
