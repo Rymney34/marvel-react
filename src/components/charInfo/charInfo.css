@@ -55,3 +55,85 @@
     height: 35px;
     background: #C4C4C4;
 }
+
+.charInfoForm{
+    margin: 50px 0 0 0;
+    width: 425px;
+    box-shadow: 0px 0px 20px 0px #00000040;
+    height: 13%;
+    
+    display: flex;
+    justify-content: center;
+     border: 1px solid #FFFFFF;
+     background: #FFFFFF;
+    
+ 
+    
+    
+}
+
+.charImg2{
+    width: 150px;
+    height: 150px;
+    margin: 25px 25px 15px 0px
+}
+
+.titleChar{
+    font-size: 22px;
+    text-transform: uppercase;
+    margin: 25px 0 35px 0;
+}
+
+
+.mainInfo{
+    
+}
+
+.topCharInfo{
+    display: flex;
+    
+}
+
+.rightTopChar{
+
+}
+
+.buttons{
+
+}
+
+.description{
+    width: 375px;
+      text-align: justify;
+    font-family: 'Roboto Condensed';
+    margin: 0;
+    font-size: 14px;
+
+}
+
+.commicsBlock{
+
+}
+
+.commicsBlock>h3{
+    margin-top: 10px;
+}
+.comicsList>ul{
+    list-style: none;
+    padding: 0;
+}
+.comicsList{
+   display: block;
+   
+}
+
+
+
+.comicsInfo{
+    margin: 0px 0 10px 0px;
+    box-shadow: 0px 4px 4px 0px #00000040;
+     font-size: 16px;
+     padding: 10px 4px 0 4px;
+    
+
+}

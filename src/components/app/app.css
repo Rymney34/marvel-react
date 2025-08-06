@@ -8,5 +8,13 @@
 .mainPage{
   width: 100%;
   display: flex;
- 
+  margin-bottom: 45px;
+}
+
+.visionDecor {
+   margin: 820px 0px 0px 973px;
+    position: absolute;
+    width: 467px;
+    height: 372px;
+     z-index: -1;
 }

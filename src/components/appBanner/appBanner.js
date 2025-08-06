@@ -21,8 +21,8 @@ const AppBanner = () => {
                         </p>
                         <div className="buttonsBlock">
                             
-                                <Button1 style={{margin: '0px 0 -35px -40px'}} text='homepage'/>
-                           <Button1  style={{backgroundColor:'#5C5C5C', margin: '0px 0 -35px -40px'}} text='wiki'/>
+                                <Button1  text='homepage'/>
+                           <Button1  wrapStyle={{margin: '0 0 0 30px'}} style={{backgroundColor:'#5C5C5C'}} text='wiki'/>
                             
                         </div>
                     </div>
@@ -40,7 +40,7 @@ const AppBanner = () => {
                             Or choose another one
                         </p>
                             <div className="buttonSt">
-                                <Button1 text='try it'/>
+                                <Button1  text='try it'/>
                             </div>
 
                     </div>
