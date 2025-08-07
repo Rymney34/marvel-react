@@ -3,6 +3,7 @@ import AppBanner from '../appBanner/appBanner';
 import CharList from '../charList/charList.js';
 import EmptyForm from '../charInfo/emptyForm.js';
 import CharInfo from '../charInfo/charInfo.js';
+import FindChar from '../charInfo/findChar.js';
 
 import char from '../../resources/img/vision.png'
 
@@ -16,7 +17,12 @@ function App() {
       <AppBanner/>
       <div className='mainPage'>
           <CharList/>
-          <CharInfo/>
+         
+          <div className='mainInfoFind'>
+             <CharInfo/>
+             <FindChar/>
+          </div>
+          
           {/* <EmptyForm/> */}
            <img className='visionDecor'src={char} alt='decorVision'/>
       </div>
