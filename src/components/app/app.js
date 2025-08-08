@@ -13,6 +13,7 @@ function App() {
   return (
     <div className="App">
       <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'></link>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       <AppHeader/>
       <AppBanner/>
       <div className='mainPage'>
@@ -21,6 +22,7 @@ function App() {
           <div className='mainInfoFind'>
              <CharInfo/>
              <FindChar/>
+             {console.log(window)}
           </div>
           
           {/* <EmptyForm/> */}
@@ -29,6 +31,8 @@ function App() {
      
       
     </div>
+
+    
   );
 }
 

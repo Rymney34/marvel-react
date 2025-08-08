@@ -18,7 +18,7 @@ const CharList = () => {
                 <SingleChar/>
             </div>
             <div className="buttonsWrap"> 
-                <Button1 style={{width: '170px', margin: '45px 0px 0px 140px'}} text='Load more'/>
+                <Button1 style={{width: '170px'}} text='Load more'/>
             </div>
         
             
