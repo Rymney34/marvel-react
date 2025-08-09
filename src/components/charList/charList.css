@@ -8,7 +8,7 @@
     flex-wrap: wrap;
     gap: 25px;
     row-gap: 30px;
-    margin: 50px 0 0 166px;
+    margin: 50px 0 0 0px;
     width: 675px;
     
 
@@ -16,8 +16,8 @@
 
 .buttonsWrap{
     display: flex;
-    width: 100%;
+    width: 72%;
     align-items: center;
     justify-content: center;
-    margin: 45px 0 45px 0;
+    margin: 45px 0 0px 0;
 }

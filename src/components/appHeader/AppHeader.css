@@ -13,6 +13,7 @@
 }
 header{
     display: flex;
-    justify-content: space-between;
-        margin: 55px 166px 0 166px;
+    justify-content: center;
+    gap: 610px
+        /* margin: 55px 166px 0 166px; */
 }

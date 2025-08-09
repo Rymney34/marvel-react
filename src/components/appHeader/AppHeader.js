@@ -7,11 +7,11 @@ const AppHeader = () => {
             <div className="logo-block">
                 <p> <span className="colorChange">Marvel</span> Information portal</p>
             </div>
-            <nav>
+            <div>
                 <p className='nav-bar'>
                     <a>Characters </a>/<a> Comics</a>
                 </p>
-            </nav>
+            </div>
        </header> 
     )
 }
