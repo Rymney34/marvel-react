@@ -2,15 +2,18 @@ import './charHomePage.css'
 import AppHeader from '../appHeader/AppHeader'
 import AppBanner2 from '../appActBanner2/appActBanner2'
 
+// import ReactDOM from "react-dom/client";
+
+
 const CharHomePage = () => {
     return (
         
-        <div className="char-homepage">
+        <div className="charHomepage">
             <AppHeader/>
             <AppBanner2/>
             
             <div className='mainInfoBlock'>
-                <img alt='CharImage' src=''/>
+                <img alt='charImage' src=''/>
                 <h3 className='charName'>Title</h3>
                 <p className='charDesription'>
                     In Norse mythology, Loki is a god or jötunn (or both). 
