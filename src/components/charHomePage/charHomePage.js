@@ -12,8 +12,8 @@ const CharHomePage = () => {
             <AppHeader/>
             <AppBanner2/>
             
-            <div className='mainInfoBlock'>
-                <img alt='charImage' src=''/>
+            <div className='mainCharBlock'>
+                <img className='charImage1' alt='charImage' src=''/>
                 <h3 className='charName'>Title</h3>
                 <p className='charDesription'>
                     In Norse mythology, Loki is a god or jötunn (or both). 
