@@ -15,6 +15,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from '../home/Home.js';
 
+
+import SingleComic from '../singleComic/SingleComic.js';
+
 import './app.css';
 
 function App() {
@@ -33,6 +36,10 @@ function App() {
                     <Route
                         path="/charHome"
                         element={<CharHomePage />}
+                    />
+                    <Route
+                      path="/singleComic"
+                      element={<SingleComic />}
                     />
                 </Routes>
             </Router>

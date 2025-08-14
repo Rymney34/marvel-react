@@ -1,5 +1,5 @@
 import './AppHeader.css'
-
+import { Link } from "react-router-dom";
 
 
 const AppHeader = () => {
@@ -11,7 +11,7 @@ const AppHeader = () => {
             </div>
             <div>
                 <p className='nav-bar'>
-                    <a>Characters </a>/<a> Comics</a>
+                    <Link to="/"><a>Characters </a></Link>/<Link to="/singleComic"><a> Comics</a></Link> 
                 </p>
             </div>
        </header> 
