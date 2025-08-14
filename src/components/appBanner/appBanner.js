@@ -1,4 +1,6 @@
 import './appBanner.css'
+import React from "react";
+import { Link } from "react-router-dom";
 
 import char from '../../resources/img/thor.jpeg'
 
@@ -21,7 +23,7 @@ const AppBanner = () => {
                         </p>
                         <div className="buttonsBlock">
                             
-                                <Button1  text='homepage'/>
+                              <Link to="/charHome"> <Button1  text='homepage' /></Link>  
                            <Button1  wrapStyle={{margin: '0 0 0 30px'}} style={{backgroundColor:'#5C5C5C'}} text='wiki'/>
                             
                         </div>

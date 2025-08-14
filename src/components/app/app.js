@@ -10,6 +10,11 @@ import CharHomePage from '../charHomePage/charHomePage.js';
 
 import char from '../../resources/img/vision.png'
 
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import Home from '../home/Home.js';
+
 import './app.css';
 
 function App() {
@@ -19,26 +24,18 @@ function App() {
       <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'></link>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
       
-      <div className='Main1'>  
-        
-      <AppHeader/>
-      
-      <AppBanner/>
-      <div className='mainPage'>
-          <CharList/>
-         
-          <div className='mainInfoFind'>
-             <CharInfo/>
-             <FindChar/>
-             {console.log(window)}
-          </div>
-          
-          {/* <EmptyForm/> */}
-           <img className='visionDecor'src={char} alt='decorVision'/>
-      </div>
-      
-      </div>
-      
+          <Router>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={<Home/>}
+                    />
+                    <Route
+                        path="/charHome"
+                        element={<CharHomePage />}
+                    />
+                </Routes>
+            </Router>
      
       
     </div>

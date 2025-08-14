@@ -1,0 +1,30 @@
+.AppBanner2{
+    background-color: #232222;
+    width: 1100px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    
+
+}
+.parBanner {
+    color: rgba(255, 255, 255, 1);
+    font-family: Roboto Condensed;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+.leftBanner{
+    display: flex;
+    margin-left: 45px;
+    gap: 83px
+
+}
+
+.rightBanner{
+    margin-right: 25px;
+
+}
