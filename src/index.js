@@ -7,7 +7,7 @@ import MarvelService from './services/MarvelService'
 
 const marvelService = new MarvelService();
 
-marvelService.getCharacter(2).then(res=> console.log(res));
+// marvelService.getCharacter(2).then(res=> console.log(res));
 
 // marvelService.getAllCharacters().then(res=> res.data.results.forEach(item => console.log(item.name)));
 
