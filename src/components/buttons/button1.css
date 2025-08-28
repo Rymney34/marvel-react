@@ -14,8 +14,8 @@
   );
   display: flex;
   align-items: center;
-  justify-content: center
-  
+  justify-content: center;
+   
   
 }
 
@@ -23,6 +23,13 @@
     color: #FFFFFF;
     font-family: 'Roboto Condensed';
      text-transform: uppercase;
+     
+}
+
+.buttonDiv:hover{
+  background-color: #be5965;
+  transition-duration: 1s, 5s ;
+  
 }
 
 .buttonWrap{

@@ -3,7 +3,7 @@ import './button1.css';
 
 const Button1 = (props) => {
     return(
-        <div className='buttonWrap' style={props.wrapStyle} >
+        <div className='buttonWrap' onClick={props.onClick} style={props.wrapStyle} >
             <div className='buttonDiv' style={props.style}>
             {/* <div className={`buttonDiv${props.clazz}  `}></div> */}
                 <a>{props.text}</a>

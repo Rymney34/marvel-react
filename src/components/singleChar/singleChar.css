@@ -18,3 +18,9 @@
     margin: 15px;
     font-family: 'Roboto Condensed';
 }
+
+.charImgM{
+  width: 200px;
+  height: 200px;
+ object-fit: cover;
+}
