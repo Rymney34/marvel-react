@@ -1,7 +1,10 @@
 import './singleChar.css'
 import charImg from '../../resources/img/abyss.jpg'
 
+
 const SingleChar = (props) =>{
+
+    
       const {id,charImg1, name} = props
      return(
         <div key={id}className='charWrapper' >

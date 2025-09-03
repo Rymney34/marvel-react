@@ -22,6 +22,10 @@ class MarvelService {
         return this.getResource(`${this._apiBase}characters/${id}?${this._apiKey}`);
 
     }
+    getComics = () => {
+        return this.getResource(`${this._apiBase}comics/?${this._apiKey}`);
+
+    }
 }
 
 export default MarvelService

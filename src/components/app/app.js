@@ -7,10 +7,11 @@ import FindChar from '../charInfo/findChar.js';
 import Routes1 from '../routes/routes1.js';
 import { Outlet, Link } from "react-router-dom";
 import CharHomePage from '../charHomePage/charHomePage.js';
+import React from 'react';
 
 import char from '../../resources/img/vision.png'
 
-import React from "react";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from '../home/Home.js';
@@ -20,6 +21,7 @@ import SingleComic from '../singleComic/SingleComic.js';
 
 import './app.css';
 import ComicsList from '../comicsList/comicsList.js';
+import SingleChar from '../singleChar/singleChar.js';
 
 import { Component } from 'react';
 import MarvelService from '../../services/MarvelService.js'
@@ -40,22 +42,22 @@ class App extends Component{
     }
 
   
-    componentDidMount() {
-      this.marvelService
-        .getAllCharacters() // Assuming your service has a method like this
-        .then(data => {
-          this.setState({
-            marvelData: data,
-            isLoading: false
-          });
-        })
-        .catch(error => {
-          this.setState({
-            error: error,
-            isLoading: false
-          });
-        });
-    }
+    // componentDidMount() {
+    //   this.marvelService
+    //     .getAllCharacters() // Assuming your service has a method like this
+    //     .then(data => {
+    //       this.setState({
+    //         marvelData: data,
+    //         isLoading: false
+    //       });
+    //     })
+    //     .catch(error => {
+    //       this.setState({
+    //         error: error,
+    //         isLoading: false
+    //       });
+    //     });
+    // }
 
   render (){
     
@@ -80,12 +82,17 @@ class App extends Component{
                           />
                           <Route
                             path="/singleComic"
-                            element={<SingleComic />}
+                            element={<SingleComic/>}
                           />
                           <Route
                             path="/comicsList"
-                            element={<ComicsList />}
+                            element={<ComicsList marvelService={this.marvelService} />}
                           />
+                           <Route
+                            path="/charHomePage"
+                            element={<CharHomePage marvelService={this.marvelService} />}
+                          />
+                          
                       </Routes>
                   </Router>
           

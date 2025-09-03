@@ -3,6 +3,8 @@ import SingleChar from "../singleChar/singleChar"
 import Button1 from "../buttons/button1"
 import './charList.css'
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Link, Outlet, useNavigate} from 'react-router-dom';
+
 
 
 function CharList({marvelService}){
@@ -10,6 +12,8 @@ function CharList({marvelService}){
     const [characters, setCharacters] = useState([]);
      const [visibleCount, setVisibleCount] = useState(9);
      const [hovered, setHovered] = useState(false);
+
+     const navigate = useNavigate();
   
    useEffect(() => {
     marvelService
@@ -17,7 +21,7 @@ function CharList({marvelService}){
       .then(item => {
         // console.log('Marvel Data from Child:', data);
         const response = item.data.results 
-        console.log('Data:',response);
+        console.log('Data Char:',response);
         
             setCharacters(response);
 
@@ -36,9 +40,25 @@ function CharList({marvelService}){
 
       const elements = charactersToShow.map(items => {
         const {id, ...itemProps} = items;
+
+            function Page1 (){
+              navigate("/charHomePage", 
+                  {
+                  state:{
+                        
+                        coverImg:itemProps.thumbnail.path +'.'+ itemProps.thumbnail.extension, 
+                        name:itemProps.name, 
+                        description:itemProps.description,
+                          
+                   }});  
+            //   console.log("page")
+        }
         
         return(
-          <SingleChar key={id} charImg1={itemProps.thumbnail.path + '.' + itemProps.thumbnail.extension} name={itemProps.name}/>
+          <div onClick={Page1}>
+               <SingleChar key={id} charImg1={itemProps.thumbnail.path + '.' + itemProps.thumbnail.extension} name={itemProps.name}/>
+          </div>
+         
         )
       })
 
