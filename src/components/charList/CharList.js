@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route, Link, Outlet, useNavigate} from 'react-ro
 
 
 
-function CharList({marvelService}){
+function CharList({marvelService, onCharSelect}){
 
     const [characters, setCharacters] = useState([]);
      const [visibleCount, setVisibleCount] = useState(9);
@@ -21,7 +21,7 @@ function CharList({marvelService}){
       .then(item => {
         // console.log('Marvel Data from Child:', data);
         const response = item.data.results 
-        console.log('Data Char:',response);
+        // console.log('Data Char:',response);
         
             setCharacters(response);
 
@@ -41,21 +41,21 @@ function CharList({marvelService}){
       const elements = charactersToShow.map(items => {
         const {id, ...itemProps} = items;
 
-            function Page1 (){
-              navigate("/charHomePage", 
-                  {
-                  state:{
+        //     function Page1 (){
+        //       navigate("/charHomePage", 
+        //           {
+        //           state:{
                         
-                        coverImg:itemProps.thumbnail.path +'.'+ itemProps.thumbnail.extension, 
-                        name:itemProps.name, 
-                        description:itemProps.description,
+        //                 coverImg:itemProps.thumbnail.path +'.'+ itemProps.thumbnail.extension, 
+        //                 name:itemProps.name, 
+        //                 description:itemProps.description,
                           
-                   }});  
-            //   console.log("page")
-        }
+        //            }});  
+        //     //   console.log("page")
+        // }
         
         return(
-          <div onClick={Page1}>
+          <div onClick={()=> onCharSelect(itemProps)}>
                <SingleChar key={id} charImg1={itemProps.thumbnail.path + '.' + itemProps.thumbnail.extension} name={itemProps.name}/>
           </div>
          

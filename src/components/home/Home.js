@@ -8,9 +8,11 @@ import FindChar from '../charInfo/findChar.js';
 
 import char from '../../resources/img/vision.png'
 import { Component } from 'react';
+import { useState } from 'react';
 
-class Home extends Component {
+const Home = ({marvelService}) => {
 
+    const [selectedChar, setSelectedChar] = useState(null)
     // componentDidMount() {
     
     
@@ -29,9 +31,11 @@ class Home extends Component {
     // }
 
    
+        // if(selectedChar){
+        //     console.log(selectedChar.urls)
+        // }
+    
 
-    render() {
-    const { marvelService, marvelData, } = this.props;
 
         return(
                 <div className='Main1'>  
@@ -42,11 +46,26 @@ class Home extends Component {
                     
                     <AppBanner/>
                     <div className='mainPage'>
-                        <CharList marvelService={marvelService} marvelData={marvelData} />
+                        <CharList marvelService={marvelService}   onCharSelect={setSelectedChar} />
                         
                         <div className='mainInfoFind'>
-                            <CharInfo/>
-                            <FindChar/>
+                           {
+                            selectedChar ? 
+                                <CharInfo charImg1={selectedChar.thumbnail.path + '.' + selectedChar.thumbnail.extension} 
+                                    name={selectedChar.name}
+                                    description={selectedChar.description}
+                                    comics={selectedChar.comics.items}
+                                    link={selectedChar.urls}
+                                
+                                /> 
+                                    : <EmptyForm/>
+                                    
+                           }
+                              
+                            
+                            
+                            
+                            {/* <FindChar/> */}
                            
                         </div>
                         
@@ -56,7 +75,7 @@ class Home extends Component {
                 
                 </div>
         )
-    }
+    
    
    
       
