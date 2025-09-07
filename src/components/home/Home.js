@@ -44,7 +44,7 @@ const Home = ({marvelService}) => {
                     </div>
                     
                     
-                    <AppBanner/>
+                    <AppBanner  marvelService={marvelService}/>
                     <div className='mainPage'>
                         <CharList marvelService={marvelService}   onCharSelect={setSelectedChar} />
                         

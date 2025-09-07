@@ -4,7 +4,7 @@ import './button1.css';
 const Button1 = (props) => {
 
     const { link} = props;
-    console.log('gazoz'+props.link)
+   
     return(
         <a href={props.link} style={{ textDecoration: 'none', outlineColor: 'transparent'}}> 
         

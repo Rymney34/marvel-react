@@ -1,5 +1,5 @@
 import './appBanner.css'
-import React from "react";
+// import React from "react";
 import { Link } from "react-router-dom";
 
 import char from '../../resources/img/thor.jpeg'
@@ -8,26 +8,79 @@ import imgB from '../../resources/img/mjolnir.png'
 
 import Button1 from '../buttons/button1'
 
-let TryIt ='Try it'
 
-const AppBanner = () => {
+
+import React, { useState, useEffect } from 'react';
+
+const AppBanner = ({marvelService}) => {
+
+    const [characters, setCharacters] = useState([]);
+
+    const [selectedChar, setSelectedChar] = useState(null)
+
+    const [char, setChar] = useState(null)
+
+ useEffect(() => {
+    marvelService
+      .getAllCharacters()// Call service from props
+      .then(item => {
+        // console.log('Marvel Data from Child:', data);
+        const response = item.data.results 
+        // console.log('Data Char:',response);
+        
+            setCharacters(response);
+
+        //  console.log(marvelData.data.results)
+      })
+      .catch(error => {
+        console.error('Error in Child:', error);
+      });
+
+      
+      }, [marvelService]);
+
+       useEffect(() => {
+            const rand = characters[Math.random() * characters.length | 0]
+            setChar(rand);
+        }, [characters]);
+
+    
+    
+
+
+     const charName = char?.name || 'No name available';
+    const charDescription = char?.description || 'No description available for this character.';
+    const charImage = char?.thumbnail ? `${char.thumbnail.path}.${char.thumbnail.extension}` : null;
+    const charLinks = char?.urls || 'No Urls available for this character.';
+   
+    // const charLinks = char.urls;
+      
+       const RandomChar = () => {
+        var rand = characters[Math.random() * characters.length | 0]
+
+            if(rand === undefined || ''){
+                console.log("String is empty or undefind")
+            }
+            else setChar(rand)
+        }
+
     return (
         <div className="bannerWrapper">
             <div className="bannerBlock">
                 <div className="randomInfoBlock">
-                    <img className="charImg" alt="Char" src={char}/>
+                    <img className="charImg" alt="Char" src={charImage}/>
                     <div className='charDetails'>
-                        <h2 className="charName"><b>Thor</b></h2>
-                        <p className="charDesc"> As the Norse God of thunder and lightning, Thor wields one of the greatest weapons ever made, the enchanted ham
-                            mer Mjolnir. While others have described Thor as an over-muscled, oafish imbecile, he's quite smart and compassionate...
+                        <h2 className="charName"><b>{charName}</b></h2>
+                        <p className="charDesc"> {charDescription}
                         </p>
                         <div className="buttonsBlock">
                             
-                              <Link to="/charHome"> <Button1  text='homepage' /></Link>  
-                           <Button1  wrapStyle={{margin: '0 0 0 30px'}} style={{backgroundColor:'#5C5C5C'}} text='wiki'/>
+                               <Button1 link={charLinks[0].url} text='homepage' />
+                           <Button1  link={charLinks[1].url}  wrapStyle={{margin: '0 0 0 30px'}} style={{backgroundColor:'#5C5C5C'}} text='wiki'/>
                             
                         </div>
                     </div>
+                    
                     
                 </div>
                 <div className="randomCTAWrapper">
@@ -42,7 +95,7 @@ const AppBanner = () => {
                             Or choose another one
                         </p>
                             <div className="buttonSt">
-                                <Button1  text='try it'/>
+                                <Button1 onClick={RandomChar} text='try it'/>
                             </div>
 
                     </div>

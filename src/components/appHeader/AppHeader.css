@@ -19,3 +19,7 @@ header{
     gap: 595px
         /* margin: 55px 166px 0 166px; */
 }
+
+.nav-bar .highlighted{
+    color:red
+}
