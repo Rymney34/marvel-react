@@ -2,12 +2,13 @@ import './appBanner.css'
 // import React from "react";
 import { Link } from "react-router-dom";
 
-import char from '../../resources/img/thor.jpeg'
+import char from '../../resources/img/thor.jpeg';
 
-import imgB from '../../resources/img/mjolnir.png'
+import imgB from '../../resources/img/mjolnir.png';
 
-import Button1 from '../buttons/button1'
+import Button1 from '../buttons/button1';
 
+import Spinner from '../spinner/Spinner';
 
 
 import React, { useState, useEffect } from 'react';
@@ -20,16 +21,20 @@ const AppBanner = ({marvelService}) => {
 
     const [char, setChar] = useState(null)
 
+    const [loading, setLoad] = useState(1)
+
+    //   const loading = 1
+
  useEffect(() => {
     marvelService
       .getAllCharacters()// Call service from props
       .then(item => {
         // console.log('Marvel Data from Child:', data);
         const response = item.data.results 
-        // console.log('Data Char:',response);
+        console.log('Data Char:',response);
         
             setCharacters(response);
-
+            setLoad(0)
         //  console.log(marvelData.data.results)
       })
       .catch(error => {
@@ -42,16 +47,13 @@ const AppBanner = ({marvelService}) => {
        useEffect(() => {
             const rand = characters[Math.random() * characters.length | 0]
             setChar(rand);
+            
         }, [characters]);
 
     
-    
+   
 
-
-     const charName = char?.name || 'No name available';
-    const charDescription = char?.description || 'No description available for this character.';
-    const charImage = char?.thumbnail ? `${char.thumbnail.path}.${char.thumbnail.extension}` : null;
-    const charLinks = char?.urls || 'No Urls available for this character.';
+  
    
     // const charLinks = char.urls;
       
@@ -64,25 +66,14 @@ const AppBanner = ({marvelService}) => {
             else setChar(rand)
         }
 
+    
+
     return (
         <div className="bannerWrapper">
             <div className="bannerBlock">
-                <div className="randomInfoBlock">
-                    <img className="charImg" alt="Char" src={charImage}/>
-                    <div className='charDetails'>
-                        <h2 className="charName"><b>{charName}</b></h2>
-                        <p className="charDesc"> {charDescription}
-                        </p>
-                        <div className="buttonsBlock">
-                            
-                               <Button1 link={charLinks[0].url} text='homepage' />
-                           <Button1  link={charLinks[1].url}  wrapStyle={{margin: '0 0 0 30px'}} style={{backgroundColor:'#5C5C5C'}} text='wiki'/>
-                            
-                        </div>
-                    </div>
-                    
-                    
-                </div>
+
+                {loading ? <Spinner/> : View(char)}
+                
                 <div className="randomCTAWrapper">
                    
                     <div className="randomCTABlock">
@@ -107,6 +98,34 @@ const AppBanner = ({marvelService}) => {
                     
                     
             </div>
+        </div>
+    )
+}
+
+const View = (char)=>{
+
+    const charName = char?.name || 'No name available';
+    const charDescription = char?.description || 'No description available for this character.';
+    const charImage = char?.thumbnail ? `${char.thumbnail.path}.${char.thumbnail.extension}` : null;
+    const charLinks = char?.urls || 'No Urls available for this character.';
+    return(
+        <div className="randomInfoBlock">
+
+                    
+                    <img className="charImg" alt="Char" src={charImage}/>
+                    <div className='charDetails'>
+                        <h2 className="charName"><b>{charName}</b></h2>
+                        <p className="charDesc"> {charDescription}
+                        </p>
+                        <div className="buttonsBlock">
+                            
+                               <Button1 link={charLinks[0].url} text='homepage' />
+                           <Button1  link={charLinks[1].url}  wrapStyle={{margin: '0 0 0 30px'}} style={{backgroundColor:'#5C5C5C'}} text='wiki'/>
+                            
+                        </div>
+                    </div>
+                    
+                    
         </div>
     )
 }

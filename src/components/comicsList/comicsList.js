@@ -3,7 +3,7 @@ import AppHeader from '../appHeader/AppHeader'
 import AppBanner2 from '../appActBanner2/appActBanner2'
 import Button1 from '../buttons/button1'
 import { BrowserRouter, Routes, Route, Link, Outlet, useNavigate} from 'react-router-dom';
-
+import Spinner from '../spinner/Spinner';
 import './comicsList.css'
 import React, { useState, useEffect } from 'react';
 
@@ -18,6 +18,7 @@ const navigate = useNavigate();
     const [visibleCount, setVisibleCount] = useState(8);
 
     const [isHover, setIsHover] = useState(false);
+     const [loading, setLoad] = useState(1)
 
     const handleMouseEnter = () => {
     setIsHover(true);
@@ -37,7 +38,7 @@ const navigate = useNavigate();
         // console.log('Data:',response);
         
             setComic(response);
-
+            setLoad(0)
         //  console.log(marvelData.data.results)
       })
       .catch(error => {
@@ -99,7 +100,7 @@ const navigate = useNavigate();
                 </div>
 
                 <div className="comicsList2">
-                    {elements}
+                    {loading ? <Spinner/> : elements}
                 </div>
                 <div style={{display:'flex', margin:'45px', width: '170px'}}>
                     <Button1 onClick={loadMore} wrapStyle={{width:'0'}} style={{width: '170px'}} text='Load more'/>

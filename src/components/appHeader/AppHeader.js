@@ -1,5 +1,5 @@
 import './AppHeader.css'
-import { Link } from "react-router-dom";
+import { Link, useLocation } from 'react-router-dom';  // Import useLocation
 
 import React, { useState, useEffect } from 'react';
 
@@ -17,6 +17,11 @@ const AppHeader = () => {
         console.log('gazoz')
      }
 
+    const location = useLocation();
+
+    const isCharactersPage = location.pathname === '/';
+    const isComicsPage = location.pathname === '/comicsList';
+
     
    
     
@@ -27,9 +32,12 @@ const AppHeader = () => {
             </div>
             <div>
                 <p className='nav-bar'>
-                    <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/" ><a onClick={() => handleSelect(1)} className={selected === 1 ? 'highlighted' : ''}>Characters </a></Link>/
-                    <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/comicsList" onClick={() => handleSelect(2)} className={selected === 2? 'highlighted' : ''} ><a > Comics</a></Link> 
-
+                 
+                    <a href='/' onClick={() => handleSelect(1)} className={ isCharactersPage || selected === 1 ? 'highlighted' : ''}>Characters </a>
+                  /
+                   
+                    <a href="/comicsList" onClick={() => handleSelect(2)} className={isComicsPage || selected === 2? 'highlighted' : ''} > Comics</a>
+                
                 </p>
             </div>
        </header> 

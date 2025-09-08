@@ -18,7 +18,7 @@ const CharInfo = (props) => {
         
     })
 
-    console.log('fa'+ link[0].url)
+    
 
     return(
         <div className="charInfoForm">

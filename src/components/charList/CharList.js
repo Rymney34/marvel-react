@@ -3,6 +3,7 @@ import SingleChar from "../singleChar/singleChar"
 import Button1 from "../buttons/button1"
 import './charList.css'
 import React, { useState, useEffect } from 'react';
+import Spinner from '../spinner/Spinner';
 import { BrowserRouter, Routes, Route, Link, Outlet, useNavigate} from 'react-router-dom';
 
 
@@ -12,6 +13,7 @@ function CharList({marvelService, onCharSelect}){
     const [characters, setCharacters] = useState([]);
      const [visibleCount, setVisibleCount] = useState(9);
      const [hovered, setHovered] = useState(false);
+     const [loading, setLoad] = useState(1)
 
      const navigate = useNavigate();
   
@@ -24,7 +26,7 @@ function CharList({marvelService, onCharSelect}){
         // console.log('Data Char:',response);
         
             setCharacters(response);
-
+            setLoad(0)
         //  console.log(marvelData.data.results)
       })
       .catch(error => {
@@ -86,7 +88,7 @@ function CharList({marvelService, onCharSelect}){
                 <SingleChar/>
             
                 <SingleChar/> */}
-                {elements}
+                {loading ? <Spinner/> : elements}
             </div>
             <div className="buttonsWrap"> 
                 <Button1 onClick={loadMore} wrapStyle={{width:'0'}} style={{width: '170px'}} text='Load more'/>

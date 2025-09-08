@@ -20,6 +20,13 @@ header{
         /* margin: 55px 166px 0 166px; */
 }
 
-.nav-bar .highlighted{
-    color:red
+ .highlighted{
+        color: #9F0013;
+    text-decoration: none;
+
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
 }
