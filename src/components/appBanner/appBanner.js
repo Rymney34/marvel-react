@@ -1,8 +1,8 @@
 import './appBanner.css'
-// import React from "react";
-import { Link } from "react-router-dom";
 
-import char from '../../resources/img/thor.jpeg';
+
+
+
 
 import imgB from '../../resources/img/mjolnir.png';
 
@@ -11,53 +11,50 @@ import Button1 from '../buttons/button1';
 import Spinner from '../spinner/Spinner';
 
 
+
 import React, { useState, useEffect } from 'react';
 
-const AppBanner = ({marvelService}) => {
+const AppBanner = ({marvelService, marvelData}) => {
 
     const [characters, setCharacters] = useState([]);
 
-    const [selectedChar, setSelectedChar] = useState(null)
 
     const [char, setChar] = useState(null)
 
     const [loading, setLoad] = useState(1)
 
-    //   const loading = 1
+    
 
- useEffect(() => {
-    marvelService
-      .getAllCharacters()// Call service from props
-      .then(item => {
-        // console.log('Marvel Data from Child:', data);
-        const response = item.data.results 
-        console.log('Data Char:',response);
+
+
+
+    useEffect(() => {
+        if (marvelData && marvelData.results) {
+               
+                const response = marvelData.results;
+                console.log('Data Char2221:', response);
+                setCharacters(response);
+                setLoad(0)
         
-            setCharacters(response);
-            setLoad(0)
-        //  console.log(marvelData.data.results)
-      })
-      .catch(error => {
-        console.error('Error in Child:', error);
-      });
+        } else {
+                console.log("Marvel data not loaded or missing results.");
+        }
+                // console.log(marvelData?.results)
+                
+        }, [marvelData]);  
+  
+   
+    // const charLinks = char.urls;
 
-      
-      }, [marvelService]);
-
+    
        useEffect(() => {
             const rand = characters[Math.random() * characters.length | 0]
             setChar(rand);
             
         }, [characters]);
-
-    
-   
-
-  
-   
-    // const charLinks = char.urls;
       
        const RandomChar = () => {
+       
         var rand = characters[Math.random() * characters.length | 0]
 
             if(rand === undefined || ''){

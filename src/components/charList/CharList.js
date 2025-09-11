@@ -4,37 +4,37 @@ import Button1 from "../buttons/button1"
 import './charList.css'
 import React, { useState, useEffect } from 'react';
 import Spinner from '../spinner/Spinner';
-import { BrowserRouter, Routes, Route, Link, Outlet, useNavigate} from 'react-router-dom';
+import { useNavigate} from 'react-router-dom';
 
 
 
-function CharList({marvelService, onCharSelect}){
+function CharList({marvelService, marvelData, onCharSelect}){
 
     const [characters, setCharacters] = useState([]);
-     const [visibleCount, setVisibleCount] = useState(9);
-     const [hovered, setHovered] = useState(false);
-     const [loading, setLoad] = useState(1)
+    const [visibleCount, setVisibleCount] = useState(9);
+    const [hovered, setHovered] = useState(false);
+    const [loading, setLoad] = useState(1)
 
-     const navigate = useNavigate();
-  
-   useEffect(() => {
-    marvelService
-      .getAllCharacters()// Call service from props
-      .then(item => {
-        // console.log('Marvel Data from Child:', data);
-        const response = item.data.results 
-        // console.log('Data Char:',response);
-        
-            setCharacters(response);
-            setLoad(0)
-        //  console.log(marvelData.data.results)
-      })
-      .catch(error => {
-        console.error('Error in Child:', error);
-      });
+    const navigate = useNavigate();
+     
+        useEffect(() => {
+              if (marvelData && marvelData.results) {
+                    
+                      const response = marvelData.results;
+                      console.log('Data Char2221:', response);
+                      setCharacters(response);
+                      setLoad(0)
+              
+              } else {
+                      console.log("Marvel data not loaded or missing results.");
+              }
+                      // console.log(marvelData?.results)
+                      
+              }, [marvelData]);  
+    
 
       
-      }, [marvelService]);
+     
 
       const charactersToShow = characters.slice(0, visibleCount);
 
@@ -43,19 +43,7 @@ function CharList({marvelService, onCharSelect}){
       const elements = charactersToShow.map(items => {
         const {id, ...itemProps} = items;
 
-        //     function Page1 (){
-        //       navigate("/charHomePage", 
-        //           {
-        //           state:{
-                        
-        //                 coverImg:itemProps.thumbnail.path +'.'+ itemProps.thumbnail.extension, 
-        //                 name:itemProps.name, 
-        //                 description:itemProps.description,
-                          
-        //            }});  
-        //     //   console.log("page")
-        // }
-        
+
         return(
           <div onClick={()=> onCharSelect(itemProps)}>
                <SingleChar key={id} charImg1={itemProps.thumbnail.path + '.' + itemProps.thumbnail.extension} name={itemProps.name}/>

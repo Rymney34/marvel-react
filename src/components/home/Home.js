@@ -1,4 +1,4 @@
-import React from "react";
+
 import AppHeader from '../appHeader/AppHeader';
 import AppBanner from '../appBanner/appBanner';
 import CharList from '../charList/charList.js';
@@ -7,34 +7,14 @@ import CharInfo from '../charInfo/charInfo.js';
 import FindChar from '../charInfo/findChar.js';
 
 import char from '../../resources/img/vision.png'
-import { Component } from 'react';
+
 import { useState } from 'react';
 
-const Home = ({marvelService}) => {
+const Home = ({marvelService, marvelData}) => {
 
     const [selectedChar, setSelectedChar] = useState(null)
-    // componentDidMount() {
-    
-    
-    // marvelService
-    //   .getAllCharacters()// Call service from props
-    //   .then(item => {
-    //     // console.log('Marvel Data from Child:', data);
-    //      console.log(item.data.results)
+  
 
-    //      console.log(marvelData.data)
-    //   })
-    //   .catch(error => {
-    //     console.error('Error in Child:', error);
-    //   });
-      
-    // }
-
-   
-        // if(selectedChar){
-        //     console.log(selectedChar.urls)
-        // }
-    
 
 
         return(
@@ -44,9 +24,9 @@ const Home = ({marvelService}) => {
                     </div>
                     
                     
-                    <AppBanner  marvelService={marvelService}/>
+                    <AppBanner  marvelService={marvelService} marvelData={marvelData}/>
                     <div className='mainPage'>
-                        <CharList marvelService={marvelService}   onCharSelect={setSelectedChar} />
+                        <CharList marvelService={marvelService} marvelData={marvelData}  onCharSelect={setSelectedChar} />
                         
                         <div className='mainInfoFind'>
                            {
@@ -65,7 +45,7 @@ const Home = ({marvelService}) => {
                             
                             
                             
-                            {/* <FindChar/> */}
+                            <FindChar/>
                            
                         </div>
                         

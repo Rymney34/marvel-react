@@ -75,7 +75,8 @@
 .charImg2{
     width: 150px;
     height: 150px;
-    margin: 25px 25px 15px 0px
+    margin: 25px 25px 15px 0px;
+    object-fit: cover;
 }
 
 .titleChar{
