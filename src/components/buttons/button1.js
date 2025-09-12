@@ -11,7 +11,7 @@ const Button1 = (props) => {
             <div className='buttonWrap' href="default.asp" onClick={props.onClick} style={props.wrapStyle} >
                 <div className='buttonDiv' style={props.style}>
                 {/* <div className={`buttonDiv${props.clazz}  `}></div> */}
-                    <a>{props.text}</a>
+                    <span>{props.text}</span>
                 </div>
             </div>
         </a>

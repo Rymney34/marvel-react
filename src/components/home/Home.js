@@ -10,10 +10,11 @@ import char from '../../resources/img/vision.png'
 
 import { useState } from 'react';
 
+import ErrorBoundary from '../errorBoundary/ErrorBoundary.js';
+
 const Home = ({marvelService, marvelData}) => {
 
     const [selectedChar, setSelectedChar] = useState(null)
-  
 
 
 
@@ -31,7 +32,7 @@ const Home = ({marvelService, marvelData}) => {
                         <div className='mainInfoFind'>
                            {
                             selectedChar ? 
-                                <CharInfo charImg1={selectedChar.thumbnail.path + '.' + selectedChar.thumbnail.extension} 
+                                <CharInfo id={selectedChar.id} charImg1={selectedChar.thumbnail.path + '.' + selectedChar.thumbnail.extension} 
                                     name={selectedChar.name}
                                     description={selectedChar.description}
                                     comics={selectedChar.comics.items}

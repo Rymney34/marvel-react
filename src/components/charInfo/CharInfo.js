@@ -5,14 +5,16 @@ import char from '../../resources/img/thor.jpeg'
 import './charInfo.css'
 
 const CharInfo = (props) => {
-   const {charImg1, name, description, comics, link} = props
+   const {id, charImg1, name, description, comics, link} = props
 
    
-    const elem = comics.map(items => {
+    const elem = comics.map((items, index )=> {
         
+       
         return(
-            <li className="comicsInfo">
+            <li key={index} className="comicsInfo">
                         {items}
+                       
             </li>
         )
         
@@ -23,7 +25,7 @@ const CharInfo = (props) => {
     return(
         <div className="charInfoForm">
             <div className="mainInfo">
-                <div className="topCharInfo">
+                <div  className="topCharInfo">
                     <img className="charImg2" alt='character' src={charImg1}/>
                     <div className="rightTopChar">
                         <h3 className="titleChar">{name}</h3>

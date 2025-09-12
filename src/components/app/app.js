@@ -17,6 +17,9 @@ import ComicsList from '../comicsList/comicsList.js';
 import { Component } from 'react';
 import MarvelService from '../../services/MarvelService.js'
 
+
+import ErrorBoundary from '../errorBoundary/ErrorBoundary.js';
+
 // const marvelService = new MarvelService();
 
 class App extends Component{
@@ -25,7 +28,8 @@ class App extends Component{
       
       super(props);
       this.state = {
-        marvelData: []
+        marvelData: [],
+        error: false
              // To handle errors
       };
       this.marvelService = new MarvelService()
@@ -35,12 +39,13 @@ class App extends Component{
   
     componentDidMount() {
          console.log('mount')
+    
       this.marvelService
         .getAllCharacters() // Assuming your service has a method like this
         .then(data => {
           this.setState({
             marvelData: data,
-            
+            error: true
           });
           
         })
@@ -77,10 +82,14 @@ class App extends Component{
                               path="/charHome"
                               element={<CharHomePage />}
                           />
-                          <Route
-                            path="/singleComic"
-                            element={<SingleComic/>}
-                          />
+
+                          
+                            <Route
+                              path="/singleComic"
+                              element={<ErrorBoundary> <SingleComic/> </ErrorBoundary>}
+                            />
+                         
+                         
                           <Route
                             path="/comicsList"
                             element={<ComicsList marvelService={this.marvelService} />}

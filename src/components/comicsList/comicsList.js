@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route, Link, Outlet, useNavigate} from 'react-ro
 import Spinner from '../spinner/Spinner';
 import './comicsList.css'
 import React, { useState, useEffect } from 'react';
-
+import ErrorBoundary from '../errorBoundary/ErrorBoundary.js';
 
 const ComicsList = ({marvelService}) => {
 
@@ -75,7 +75,7 @@ const navigate = useNavigate();
         
         return(
             <div onClick={Page}>
-                     <SingleComicBlock coverImg={itemProps.thumbnail.path + '.' + itemProps.thumbnail.extension} title={itemProps.title} prices={itemProps.prices[0].price}/>
+                    <ErrorBoundary><SingleComicBlock coverImg={itemProps.thumbnail.path + '.' + itemProps.thumbnail.extension} title={itemProps.title} prices={itemProps.prices[0].price}/></ErrorBoundary> 
             </div>
                 
            

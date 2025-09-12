@@ -21,7 +21,7 @@ function CharList({marvelService, marvelData, onCharSelect}){
               if (marvelData && marvelData.results) {
                     
                       const response = marvelData.results;
-                      console.log('Data Char2221:', response);
+                      console.log('Data Char:', response);
                       setCharacters(response);
                       setLoad(0)
               
@@ -45,8 +45,11 @@ function CharList({marvelService, marvelData, onCharSelect}){
 
 
         return(
-          <div onClick={()=> onCharSelect(itemProps)}>
-               <SingleChar key={id} charImg1={itemProps.thumbnail.path + '.' + itemProps.thumbnail.extension} name={itemProps.name}/>
+        //   <div key={id} onClick={()=> onCharSelect(itemProps)}>
+        //        <SingleChar  charImg1={itemProps.thumbnail.path + '.' + itemProps.thumbnail.extension} name={itemProps.name}/>
+        //   </div>
+            <div key={id} onClick={()=> onCharSelect(itemProps)}>
+               <SingleChar  charImg1={itemProps.thumbnail.path + '.' + itemProps.thumbnail.extension} name={itemProps.name}/>
           </div>
          
         )
