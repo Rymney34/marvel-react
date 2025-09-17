@@ -5,32 +5,100 @@ import './charList.css'
 import React, { useState, useEffect } from 'react';
 import Spinner from '../spinner/Spinner';
 import { useNavigate} from 'react-router-dom';
+import MarvelService from '../../services/MarvelService.js'
 
 
-
-function CharList({marvelService, marvelData, onCharSelect}){
-
+function CharList({ marvelData, onCharSelect}){
+    
     const [characters, setCharacters] = useState([]);
     const [visibleCount, setVisibleCount] = useState(9);
     const [hovered, setHovered] = useState(false);
-    const [loading, setLoad] = useState(1)
+  
+    const [offset, setOffset] = useState(20);  
+    const [chars, setChars] = useState([])
+     const [charList, setCharList] = useState([]);
+    const [loading, setLoad] = useState(true);
+    const [error, setError] = useState(false);
+    const [newItemLoading, setNewItemLoading] = useState(false);
+    
+    const [charEnded, setCharEnded] = useState(false);
+    
+    const marvelService = new MarvelService();
+
+    useEffect(() => {
+        onRequest();
+    }, [])
+
+    const onRequest = (offset) => {
+        onCharListLoading();
+        marvelService.getAllCharacters(offset)
+            .then(onCharListLoaded)
+            .catch(onError)
+          
+    }
+
+    const onCharListLoading = () => {
+        setNewItemLoading(true);
+    }
+
+    const onCharListLoaded = (newCharList) => {
+        let ended = false;
+        if (newCharList.length < 9) {
+            ended = true;
+        }
+
+        setCharList(charList => [...charList, ...newCharList]);
+        
+        setLoad(loading => false);
+        setNewItemLoading(newItemLoading => false);
+        setOffset(offset => offset + 9);
+        setCharEnded(charEnded => ended);
+    }
+
+    const onError = () => {
+        setError(true);
+        setLoad(loading => false);
+    }
+
+    
+
+    //  useEffect(() => {
+    //     marvelService
+    //     .getAllCharacters()// Call service from props
+    //     .then(item => {
+    //         // console.log('Marvel Data from Child:', data);
+    //         console.log(item.data.results)
+    //         const response = item.data.results 
+    //         console.log('Data:',response);
+            
+    //             setCharacters(response);
+
+    //         //  console.log(marvelData.data.results)
+    //     })
+    //     .catch(error => {
+    //         console.error('Error in Child:', error);
+    //     });
+
+
+    //   }, [marvelService]);
+
 
     const navigate = useNavigate();
      
-        useEffect(() => {
-              if (marvelData && marvelData.results) {
+        // useEffect(() => {
+        //       if (marvelData && marvelData.results) {
                     
-                      const response = marvelData.results;
-                      console.log('Data Char:', response);
-                      setCharacters(response);
-                      setLoad(0)
+        //               const response = marvelData.results;
+        //               console.log('Data Char:', response);
+        //               setCharacters(response);
+        //               setLoad(0)
               
-              } else {
-                      console.log("Marvel data not loaded or missing results.");
-              }
-                      // console.log(marvelData?.results)
+        //       } else {
+        //               console.log("Marvel data not loaded or missing results.");
+        //       }
+        //               // console.log(marvelData?.results)
                       
-              }, [marvelData]);  
+        //       }, [marvelData]);  
     
 
       
@@ -40,16 +108,17 @@ function CharList({marvelService, marvelData, onCharSelect}){
 
 
 
-      const elements = charactersToShow.map(items => {
+      const elements = charList.map(items => {
         const {id, ...itemProps} = items;
 
+        // console.log(itemProps)
 
         return(
         //   <div key={id} onClick={()=> onCharSelect(itemProps)}>
         //        <SingleChar  charImg1={itemProps.thumbnail.path + '.' + itemProps.thumbnail.extension} name={itemProps.name}/>
         //   </div>
-            <div key={id} onClick={()=> onCharSelect(itemProps)}>
-               <SingleChar  charImg1={itemProps.thumbnail.path + '.' + itemProps.thumbnail.extension} name={itemProps.name}/>
+            <div onClick={()=> onCharSelect(id)}>
+               <SingleChar  charImg1={itemProps.thumbnail} name={itemProps.name}/>
           </div>
          
         )
@@ -93,3 +162,4 @@ function CharList({marvelService, marvelData, onCharSelect}){
 
 
 export default CharList
+

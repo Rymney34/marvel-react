@@ -14,7 +14,7 @@ import './app.css';
 import ComicsList from '../comicsList/comicsList.js';
 
 
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import MarvelService from '../../services/MarvelService.js'
 
 
@@ -22,43 +22,39 @@ import ErrorBoundary from '../errorBoundary/ErrorBoundary.js';
 
 // const marvelService = new MarvelService();
 
-class App extends Component{
+const App = () => {
 
-    constructor(props) {
-      
-      super(props);
-      this.state = {
-        marvelData: [],
-        error: false
-             // To handle errors
-      };
-      this.marvelService = new MarvelService()
-    }
+  // const [selectdChar, setChar] = useState(null);
 
+  // const onCharSelected = (id) => {
+  //   setChar(id)
+  // }
+    
+//  this.marvelService = new MarvelService()
 
   
-    componentDidMount() {
-         console.log('mount')
+//     useEffect(()=>{
+//          console.log('mount')
     
-      this.marvelService
-        .getAllCharacters() // Assuming your service has a method like this
-        .then(data => {
-          this.setState({
-            marvelData: data,
-            error: true
-          });
+//       this.marvelService
+//         .getAllCharacters() // Assuming your service has a method like this
+//         .then(data => {
+//           this.setState({
+//             marvelData: data,
+//             error: true
+//           });
           
-        })
-        .catch(error => {
-          this.setState({
-            error: error,
+//         })
+//         .catch(error => {
+//           this.setState({
+//             error: error,
             
-          });
-        });
-    }
+//           });
+//         });
+//     })
 
-  render (){
-    console.log('render')
+
+    // console.log('render')
   // marvelService.getAllCharacters().then(res=> res.data.results.forEach(item => console.log(item)));
 
   
@@ -76,9 +72,9 @@ class App extends Component{
                           /> */}
                           <Route
                               path="/"
-                              element={<Home marvelService={this.marvelService} marvelData={this.state.marvelData.data}/>}
+                              element={<Home />}
                           />
-                          <Route
+                          {/* <Route
                               path="/charHome"
                               element={<CharHomePage />}
                           />
@@ -97,7 +93,7 @@ class App extends Component{
                            <Route
                             path="/charHomePage"
                             element={<CharHomePage marvelService={this.marvelService} />}
-                          />
+                          /> */}
                           
                       </Routes>
                   </Router>
@@ -108,7 +104,7 @@ class App extends Component{
           
       );
   }
-}
+
   
 
 export default App;

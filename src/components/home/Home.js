@@ -8,16 +8,18 @@ import FindChar from '../charInfo/findChar.js';
 
 import char from '../../resources/img/vision.png'
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
 
 import ErrorBoundary from '../errorBoundary/ErrorBoundary.js';
+import MarvelService from '../../services/MarvelService.js'
 
-const Home = ({marvelService, marvelData}) => {
 
+    
+const Home = ({ marvelData}) => {
+const marvelService = new MarvelService()
     const [selectedChar, setSelectedChar] = useState(null)
-
-
-
+  
         return(
                 <div className='Main1'>  
                     <div>
@@ -27,18 +29,20 @@ const Home = ({marvelService, marvelData}) => {
                     
                     <AppBanner  marvelService={marvelService} marvelData={marvelData}/>
                     <div className='mainPage'>
-                        <CharList marvelService={marvelService} marvelData={marvelData}  onCharSelect={setSelectedChar} />
+                        <CharList   onCharSelect={setSelectedChar} />
                         
                         <div className='mainInfoFind'>
                            {
                             selectedChar ? 
-                                <CharInfo id={selectedChar.id} charImg1={selectedChar.thumbnail.path + '.' + selectedChar.thumbnail.extension} 
-                                    name={selectedChar.name}
-                                    description={selectedChar.description}
-                                    comics={selectedChar.comics.items}
-                                    link={selectedChar.urls}
+                                // <CharInfo id={selectedChar.id} charImg1={selectedChar.thumbnail.path + '.' + selectedChar.thumbnail.extension} 
+                                //     name={selectedChar.name}
+                                //     description={selectedChar.description}
+                                //     comics={selectedChar.comics.items}
+                                //     link={selectedChar.urls}
                                 
-                                /> 
+                                // /> 
+                               
+                                 <CharInfo id={selectedChar}/> 
                                     : <EmptyForm/>
                                     
                            }
