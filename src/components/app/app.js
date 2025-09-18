@@ -20,9 +20,9 @@ import MarvelService from '../../services/MarvelService.js'
 
 import ErrorBoundary from '../errorBoundary/ErrorBoundary.js';
 
-// const marvelService = new MarvelService();
 
 const App = () => {
+const marvelService = new MarvelService();
 
   // const [selectdChar, setChar] = useState(null);
 
@@ -74,7 +74,7 @@ const App = () => {
                               path="/"
                               element={<Home />}
                           />
-                          {/* <Route
+                          <Route
                               path="/charHome"
                               element={<CharHomePage />}
                           />
@@ -88,12 +88,12 @@ const App = () => {
                          
                           <Route
                             path="/comicsList"
-                            element={<ComicsList marvelService={this.marvelService} />}
+                            element={<ComicsList marvelService={marvelService} />}
                           />
                            <Route
                             path="/charHomePage"
-                            element={<CharHomePage marvelService={this.marvelService} />}
-                          /> */}
+                            element={<CharHomePage marvelService={marvelService} />}
+                          />
                           
                       </Routes>
                   </Router>

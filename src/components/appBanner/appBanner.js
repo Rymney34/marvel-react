@@ -19,48 +19,43 @@ const AppBanner = ({marvelService, marvelData}) => {
     const [characters, setCharacters] = useState([]);
 
 
-    const [char, setChar] = useState(null)
+    const [char, setChar] = useState([])
 
-    const [loading, setLoad] = useState(1)
+    const [loading, setLoad] = useState(true)
 
     
-
-
+    
+    
 
 
     useEffect(() => {
-        if (marvelData && marvelData.results) {
-               
-                const response = marvelData.results;
-                console.log('Data Char2221:', response);
-                setCharacters(response);
-                setLoad(0)
-        
-        } else {
-                console.log("Marvel data not loaded or missing results.");
-        }
-                // console.log(marvelData?.results)
-                
-        }, [marvelData]);  
+         RandomChar()
+       
+    },[])
   
-   
-    // const charLinks = char.urls;
-
-    
-       useEffect(() => {
-            const rand = characters[Math.random() * characters.length | 0]
-            setChar(rand);
-            
-        }, [characters]);
+  
+  
       
        const RandomChar = () => {
        
-        var rand = characters[Math.random() * characters.length | 0]
+        const id = Math.floor(Math.random() * 20) + 1;
 
-            if(rand === undefined || ''){
-                console.log("String is empty or undefind")
-            }
-            else setChar(rand)
+         marvelService.
+            getCharacter(id)
+            .then(res=> 
+                // console.log(res),
+               
+                setChar(res.data.results[0]),
+                setLoad(false),
+               
+
+                
+                )
+            .catch(error => {
+            console.error('Error :', error);
+        });
+
+       
         }
 
     

@@ -125,7 +125,7 @@ function CharList({ marvelData, onCharSelect}){
       })
 
       const loadMore = () =>{
-          setVisibleCount(prevCount => prevCount+6); 
+         setOffset(offset => offset + 9);
       }
 
         const buttonStyle = {

@@ -27,20 +27,14 @@ const marvelService = new MarvelService()
                     </div>
                     
                     
-                    <AppBanner  marvelService={marvelService} marvelData={marvelData}/>
+                    <AppBanner  marvelService={marvelService} />
                     <div className='mainPage'>
                         <CharList   onCharSelect={setSelectedChar} />
                         
                         <div className='mainInfoFind'>
                            {
                             selectedChar ? 
-                                // <CharInfo id={selectedChar.id} charImg1={selectedChar.thumbnail.path + '.' + selectedChar.thumbnail.extension} 
-                                //     name={selectedChar.name}
-                                //     description={selectedChar.description}
-                                //     comics={selectedChar.comics.items}
-                                //     link={selectedChar.urls}
-                                
-                                // /> 
+                               
                                
                                  <CharInfo id={selectedChar}/> 
                                     : <EmptyForm/>
