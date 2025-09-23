@@ -4,6 +4,7 @@ import Button1 from "../buttons/button1"
 import './charList.css'
 import React, { useState, useEffect } from 'react';
 import Spinner from '../spinner/Spinner';
+import ErrorMessage from '../errorMessage/ErrorMessage';
 import { useNavigate} from 'react-router-dom';
 import MarvelService from '../../services/MarvelService.js'
 
@@ -14,7 +15,7 @@ function CharList({ marvelData, onCharSelect}){
     const [visibleCount, setVisibleCount] = useState(9);
     const [hovered, setHovered] = useState(false);
   
-    const [offset, setOffset] = useState(20);  
+    const [offset, setOffset] = useState(0);  
     const [chars, setChars] = useState([])
      const [charList, setCharList] = useState([]);
     const [loading, setLoad] = useState(true);
@@ -42,8 +43,10 @@ function CharList({ marvelData, onCharSelect}){
     }
 
     const onCharListLoaded = (newCharList) => {
+         console.log("New character list:", newCharList);
         let ended = false;
         if (newCharList.length < 9) {
+            console.log('nnl'+newCharList)
             ended = true;
         }
 
@@ -60,6 +63,9 @@ function CharList({ marvelData, onCharSelect}){
         setLoad(loading => false);
     }
 
+    const loadMore = () =>{
+         onRequest(offset)
+      }
     
 
     //  useEffect(() => {
@@ -83,25 +89,10 @@ function CharList({ marvelData, onCharSelect}){
     //   }, [marvelService]);
 
 
-    const navigate = useNavigate();
-     
-        // useEffect(() => {
-        //       if (marvelData && marvelData.results) {
-                    
-        //               const response = marvelData.results;
-        //               console.log('Data Char:', response);
-        //               setCharacters(response);
-        //               setLoad(0)
-              
-        //       } else {
-        //               console.log("Marvel data not loaded or missing results.");
-        //       }
-        //               // console.log(marvelData?.results)
-                      
-        //       }, [marvelData]);  
-    
 
-      
+
+    const navigate = useNavigate();
+
      
 
       const charactersToShow = characters.slice(0, visibleCount);
@@ -110,6 +101,8 @@ function CharList({ marvelData, onCharSelect}){
 
       const elements = charList.map(items => {
         const {id, ...itemProps} = items;
+
+  
 
         // console.log(itemProps)
 
@@ -124,14 +117,16 @@ function CharList({ marvelData, onCharSelect}){
         )
       })
 
-      const loadMore = () =>{
-         setOffset(offset => offset + 9);
-      }
+      
 
         const buttonStyle = {
         width: hovered ? '200px' : '170px',
         transition: 'width 0.3s ease', // Smooth transition
     };
+      
+    const errorMessage = error ? <ErrorMessage/> : null;
+    const spinner = loading ? <Spinner/> : null;
+    const content = !(loading || error ) ? elements : null;
     
     return(
         
@@ -148,10 +143,13 @@ function CharList({ marvelData, onCharSelect}){
                 <SingleChar/>
             
                 <SingleChar/> */}
-                {loading ? <Spinner/> : elements}
+                 {errorMessage}
+                 
+            {spinner}
+            {content}
             </div>
             <div className="buttonsWrap"> 
-                <Button1 onClick={loadMore} wrapStyle={{width:'0'}} style={{width: '170px'}} text='Load more'/>
+                <Button1 onClick={loadMore}  wrapStyle={{width:'0' , 'display': charEnded ? 'none' : 'block'}} style={{width: '170px'}} text='Load more'/>
             </div>
         
             

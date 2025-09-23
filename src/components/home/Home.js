@@ -15,6 +15,7 @@ import ErrorBoundary from '../errorBoundary/ErrorBoundary.js';
 import MarvelService from '../../services/MarvelService.js'
 
 
+//a lot of parts should be changed as a lot of code are repeated but it easy to read 
     
 const Home = ({ marvelData}) => {
 const marvelService = new MarvelService()

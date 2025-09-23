@@ -14,13 +14,14 @@ const AppHeader = () => {
 
      const handleSelect = (id) =>{
         setSelected(id)
-        console.log('gazoz')
+       
      }
 
     const location = useLocation();
 
     const isCharactersPage = location.pathname === '/';
     const isComicsPage = location.pathname === '/comicsList';
+    const isSingleComic = location.pathname === '/singleComic'
 
     
    
@@ -36,7 +37,7 @@ const AppHeader = () => {
                     <a href='/' onClick={() => handleSelect(1)} className={ isCharactersPage || selected === 1 ? 'highlighted' : ''}>Characters </a>
                   /
                    
-                    <a href="/comicsList" onClick={() => handleSelect(2)} className={isComicsPage || selected === 2? 'highlighted' : ''} > Comics</a>
+                    <a href="/comicsList" onClick={() => handleSelect(2)} className={isComicsPage || isSingleComic || selected === 2? 'highlighted' : ''} > Comics</a>
                 
                 </p>
             </div>

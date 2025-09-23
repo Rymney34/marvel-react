@@ -1,7 +1,12 @@
+import { useHttp } from "../hooks/https.hook";
 
+//good to change to marvel service 
 class MarvelService {
+
+    // const {loading, request} = useHttp();
+
     _apiBase = 'https://marvel-server-zeta.vercel.app/'
-    _apiKey = 'apikey=d4eecb0c66dedbfae4eab45d312fc1df'
+    _apiKey = 'apikey=d4eecb0c66dedbfae4eab45d312fc1df#'
 
     getResource = async (url) => {
         let res = await fetch(url);
@@ -18,13 +23,14 @@ class MarvelService {
     //     return this.getResource(`${this._apiBase}characters?${this._apiKey}`);
 
     // }
-getAllCharacters = async (offset = this._baseOffset) => {
-    const res = await this.getResource(`${this._apiBase}characters?&offset=${offset}&${this._apiKey}`);
-    return res.data.results.map(this._transformCharacter);
-}
+    getAllCharacters = async (offset = this._baseOffset) => {
+        const res = await this.getResource(`${this._apiBase}characters?limit=9&offset=${offset}&${this._apiKey}`);
+        return res.data.results.map(this._transformCharacter);
+    }
 
-    getCharacter = (id) => {
-        return this.getResource(`${this._apiBase}characters/${id}?${this._apiKey}`);
+    getCharacter = async (id) => {
+        const res = await this.getResource(`${this._apiBase}characters/${id}?${this._apiKey}`)
+        return res;
 
     }
     getComics = () => {

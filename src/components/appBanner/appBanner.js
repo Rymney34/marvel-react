@@ -10,6 +10,8 @@ import Button1 from '../buttons/button1';
 
 import Spinner from '../spinner/Spinner';
 
+import ErrorMessage from '../errorMessage/ErrorMessage';
+
 
 
 import React, { useState, useEffect } from 'react';
@@ -17,15 +19,25 @@ import React, { useState, useEffect } from 'react';
 const AppBanner = ({marvelService, marvelData}) => {
 
     const [characters, setCharacters] = useState([]);
-
+    const [error, setError] = useState(false);
 
     const [char, setChar] = useState([])
+   
+    
 
     const [loading, setLoad] = useState(true)
 
     
     
-    
+    const onError =() => {
+        setError(true);
+        setLoad(false);
+    }
+
+    const onCharLoaded = (char) => {
+        setLoad(false);
+        setChar(char);
+    }
 
 
     useEffect(() => {
@@ -44,27 +56,29 @@ const AppBanner = ({marvelService, marvelData}) => {
             getCharacter(id)
             .then(res=> 
                 // console.log(res),
-               
-                setChar(res.data.results[0]),
-                setLoad(false),
+                onCharLoaded(res.data.results[0])
+                // setChar(res.data.results[0]),
+                // setLoad(false),
                
 
                 
                 )
-            .catch(error => {
-            console.error('Error :', error);
-        });
+            .catch(onError);
 
        
         }
 
-    
+
+         const errorMessage = error ? <ErrorMessage/> : null;
+          const spinner = loading ? <Spinner/> : null;
+         const content = !(loading || error || !char) ? View(char) : null;
 
     return (
         <div className="bannerWrapper">
             <div className="bannerBlock">
-
-                {loading ? <Spinner/> : View(char)}
+                {errorMessage}
+                {spinner}
+                {content}
                 
                 <div className="randomCTAWrapper">
                    
@@ -96,10 +110,13 @@ const AppBanner = ({marvelService, marvelData}) => {
 
 const View = (char)=>{
 
+
+
     const charName = char?.name || 'No name available';
     const charDescription = char?.description || 'No description available for this character.';
     const charImage = char?.thumbnail ? `${char.thumbnail.path}.${char.thumbnail.extension}` : null;
     const charLinks = char?.urls || 'No Urls available for this character.';
+
     return(
         <div className="randomInfoBlock">
 

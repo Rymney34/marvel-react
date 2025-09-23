@@ -4,6 +4,7 @@ import AppBanner2 from '../appActBanner2/appActBanner2'
 import Button1 from '../buttons/button1'
 import { BrowserRouter, Routes, Route, Link, Outlet, useNavigate} from 'react-router-dom';
 import Spinner from '../spinner/Spinner';
+import ErrorMessage from '../errorMessage/ErrorMessage';
 import './comicsList.css'
 import React, { useState, useEffect } from 'react';
 import ErrorBoundary from '../errorBoundary/ErrorBoundary.js';
@@ -19,6 +20,8 @@ const navigate = useNavigate();
 
     const [isHover, setIsHover] = useState(false);
      const [loading, setLoad] = useState(1)
+     const [error, setError] = useState(false);
+
 
     const handleMouseEnter = () => {
     setIsHover(true);
@@ -41,12 +44,16 @@ const navigate = useNavigate();
             setLoad(0)
         //  console.log(marvelData.data.results)
       })
-      .catch(error => {
-        console.error('Error in Child:', error);
-      });
+      .catch(onError);
+
 
       
       }, [marvelService]);
+
+      const onError = () => {
+        setError(true);
+        setLoad(loading => false);
+    }
 
       const comicsToShow = comics.slice(0, visibleCount);
 
@@ -86,6 +93,9 @@ const navigate = useNavigate();
       const loadMore = () =>{
           setVisibleCount(prevCount => prevCount+8); 
       }
+       const errorMessage = error ? <ErrorMessage/> : null;
+        const spinner = loading ? <Spinner/> : null;
+      const content = !(loading || error) ? elements : null
 
 
 
@@ -100,7 +110,9 @@ const navigate = useNavigate();
                 </div>
 
                 <div className="comicsList2">
-                    {loading ? <Spinner/> : elements}
+                    {errorMessage}
+                    {spinner}
+                    {content}
                 </div>
                 <div style={{display:'flex', margin:'45px', width: '170px'}}>
                     <Button1 onClick={loadMore} wrapStyle={{width:'0'}} style={{width: '170px'}} text='Load more'/>
