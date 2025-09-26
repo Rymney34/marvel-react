@@ -48,11 +48,11 @@ const marvelService = new MarvelService()
                             <FindChar/>
                            
                         </div>
-                        
+                       
                         {/* <EmptyForm/> */}
-                        <img className='visionDecor'src={char} alt='decorVision'/>
+                        
                     </div>
-                
+                 <img className='visionDecor'src={char} alt='decorVision'/>
                 </div>
         )
     

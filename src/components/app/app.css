@@ -22,12 +22,14 @@
 
 .mainPage{
   /* width: 100%; */
+  /* height: 100vh; */
   display: flex;
   margin-bottom: 45px;
 }
 
 .visionDecor {
-   margin: 820px 0px 0px 973px;
+    right: 200px;
+    bottom: 0px;
     position: absolute;
     width: 467px;
     height: 372px;
@@ -54,7 +56,8 @@
     /* } */
 
     .visionDecor{
-      margin: 810px 0 0 820px;
+       right: 0px;
+      bottom: 0px;
     }
 
 }

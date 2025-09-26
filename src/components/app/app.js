@@ -60,46 +60,48 @@ const marvelService = new MarvelService();
   
       return (
           
-          <div className="App">
-            <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'></link>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-            
+          
                 <Router>
-                      <Routes>
-                          {/* <Route
-                              path="/"
-                              element={<Home marvelService={this.marvelService} />}
-                          /> */}
-                          <Route
-                              path="/"
-                              element={<Home />}
-                          />
-                          <Route
-                              path="/charHome"
-                              element={<CharHomePage />}
-                          />
+                      <div className="App">
+                      <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'></link>
+                      <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+            
+                          <Routes>
+                              {/* <Route
+                                  path="/"
+                                  element={<Home marvelService={this.marvelService} />}
+                              /> */}
+                              <Route
+                                  path="/"
+                                  element={<Home />}
+                              />
+                              <Route
+                                  path="/charHome"
+                                  element={<CharHomePage />}
+                              />
 
-                          
-                            <Route
-                              path="/singleComic"
-                              element={<ErrorBoundary> <SingleComic/> </ErrorBoundary>}
-                            />
-                         
-                         
-                          <Route
-                            path="/comicsList"
-                            element={<ComicsList marvelService={marvelService} />}
-                          />
-                           <Route
-                            path="/charHomePage"
-                            element={<CharHomePage marvelService={marvelService} />}
-                          />
-                          
-                      </Routes>
+                              
+                                <Route
+                                  path="/singleComic"
+                                  element={<ErrorBoundary> <SingleComic/> </ErrorBoundary>}
+                                />
+                            
+                            
+                              <Route
+                                path="/comicsList"
+                                element={<ComicsList marvelService={marvelService} />}
+                              />
+                              <Route
+                                path="/charHomePage"
+                                element={<CharHomePage marvelService={marvelService} />}
+                              />
+                              
+                          </Routes>
+                      </div>
                   </Router>
           
             
-          </div>
+     
 
           
       );
