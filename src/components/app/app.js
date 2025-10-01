@@ -1,24 +1,18 @@
 
 import CharHomePage from '../charHomePage/charHomePage.js';
-
-
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
 import Home from '../home/Home.js';
-
-
 import SingleComic from '../singleComic/SingleComic.js';
-
 import './app.css';
 import ComicsList from '../comicsList/comicsList.js';
-
-
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import MarvelService from '../../services/MarvelService.js'
-
-
 import ErrorBoundary from '../errorBoundary/ErrorBoundary.js';
+import Spinner from '../spinner/Spinner.js';
+
+
+// Good way to optimise app zatychika anticrash
+const Page404 = lazy(() => import('../pages/404'));
 
 
 const App = () => {
@@ -65,7 +59,7 @@ const marvelService = new MarvelService();
                       <div className="App">
                       <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'></link>
                       <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
-            
+                      <Suspense fallback={<Spinner/>}>
                           <Routes>
                               {/* <Route
                                   path="/"
@@ -82,9 +76,11 @@ const marvelService = new MarvelService();
 
                               
                                 <Route
-                                  path="/singleComic"
+                                  path="/comicsList/:comicSingle"
                                   element={<ErrorBoundary> <SingleComic/> </ErrorBoundary>}
                                 />
+                               
+                              
                             
                             
                               <Route
@@ -95,8 +91,18 @@ const marvelService = new MarvelService();
                                 path="/charHomePage"
                                 element={<CharHomePage marvelService={marvelService} />}
                               />
+
+                              <Route
+                              path='*'
+                              element={<Page404/>}
+                              />
+                              
+                                
+                              
+                              
                               
                           </Routes>
+                        </Suspense>
                       </div>
                   </Router>
           

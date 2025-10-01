@@ -1,6 +1,7 @@
 import comic from '../../resources/img/x-men.png'
 import AppHeader from '../appHeader/AppHeader'
 import AppBanner2 from '../appActBanner2/appActBanner2'
+import { useParams} from 'react-router-dom';
 import React from "react";
 // import { Link } from "react-router-dom";
 
@@ -10,6 +11,9 @@ import { BrowserRouter, Routes, Route, Link, Outlet } from 'react-router-dom';
 import { useState } from 'react';
 
 const SingleComic = () =>{
+
+    // const smth1 = useParams();
+    // console.log(smth1)
     // const {coverImg, title, prices, description, pageCount,language} = props
 
      const location = useLocation();

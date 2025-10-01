@@ -1,5 +1,5 @@
 import './AppHeader.css'
-import { Link, useLocation } from 'react-router-dom';  // Import useLocation
+import { Link, useLocation, NavLink } from 'react-router-dom';  // Import useLocation
 
 import React, { useState, useEffect } from 'react';
 
@@ -19,9 +19,7 @@ const AppHeader = () => {
 
     const location = useLocation();
 
-    const isCharactersPage = location.pathname === '/';
-    const isComicsPage = location.pathname === '/comicsList';
-    const isSingleComic = location.pathname === '/singleComic'
+
 
     
    
@@ -34,11 +32,21 @@ const AppHeader = () => {
             <div>
                 <p className='nav-bar'>
                  
-                    <a href='/' onClick={() => handleSelect(1)} className={ isCharactersPage || selected === 1 ? 'highlighted' : ''}>Characters </a>
-                  /
-                   
-                    <a href="/comicsList" onClick={() => handleSelect(2)} className={isComicsPage || isSingleComic || selected === 2? 'highlighted' : ''} > Comics</a>
-                
+                    
+                    <NavLink 
+                        to="/" 
+                        end 
+                        style={({ isActive }) => ({ color: isActive ? "#9f0013" : "inherit" })}
+                    >
+                         Characters
+                    </NavLink>
+                    {' '}/{' '}
+                    <NavLink 
+                        to="/comicsList" 
+                        style={({ isActive }) => ({ color: isActive ? "#9f0013" : "inherit" })}
+                    >
+                         Comics
+                    </NavLink>
                 </p>
             </div>
        </header> 

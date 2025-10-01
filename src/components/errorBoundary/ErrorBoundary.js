@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link } from "react-router-dom";
 
 class ErrorBoundary extends Component {
     state = {
@@ -14,7 +15,13 @@ class ErrorBoundary extends Component {
 
     render () {
         if(this.state.error) {
-            return <h2>Something went wrong</h2>
+            return (
+                <div style={{textAlign: 'center'}}>
+                    <h2 >Something went wrong... or Page doesnt exist</h2>
+                    <Link style={{'display': 'block', 'textAlign': 'center', 'fontWeight': 'bold', 'fontSize': '24px', 'marginTop': '30px'}} to="/comicsList">Back to main page</Link>
+                </div>
+            )
+         
         }
 
         return this.props.children;

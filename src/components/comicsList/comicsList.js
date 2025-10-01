@@ -61,11 +61,12 @@ const navigate = useNavigate();
 
       const elements = comicsToShow.map(items => {
         const {id, ...itemProps} = items;
+       
 
 
          
         function Page (){
-              navigate("/singleComic", 
+              navigate(`/comicsList/${id}`, 
                   {
                   state:{
                         
