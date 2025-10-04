@@ -33,6 +33,12 @@ class MarvelService {
         return res;
 
     }
+    
+    getCharacterByName = async (name) => {
+        const res = await this.getResource(`${this._apiBase}characters?name=${name}&${this._apiKey}`)
+        return res;
+
+    }
     getComics = () => {
         return this.getResource(`${this._apiBase}comics/?${this._apiKey}`);
 

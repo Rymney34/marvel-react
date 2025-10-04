@@ -28,6 +28,7 @@
 .charImage1{
     width: 293px;
     height: 293px;
+    object-fit: cover;
 }
 
 .charName2{

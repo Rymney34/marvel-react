@@ -69,10 +69,10 @@ const marvelService = new MarvelService();
                                   path="/"
                                   element={<Home />}
                               />
-                              <Route
+                              {/* <Route
                                   path="/charHome"
                                   element={<CharHomePage />}
-                              />
+                              /> */}
 
                               
                                 <Route
@@ -89,8 +89,9 @@ const marvelService = new MarvelService();
                               />
                               <Route
                                 path="/charHomePage"
-                                element={<CharHomePage marvelService={marvelService} />}
+                                element={<CharHomePage/>}
                               />
+                              
 
                               <Route
                               path='*'

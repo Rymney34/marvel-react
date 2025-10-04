@@ -11,7 +11,7 @@ import Button1 from '../buttons/button1';
 import Spinner from '../spinner/Spinner';
 
 import ErrorMessage from '../errorMessage/ErrorMessage';
-
+import char1 from '../../resources/img/noImage.png'
 
 
 import React, { useState, useEffect } from 'react';
@@ -121,7 +121,12 @@ const View = (char)=>{
         <div className="randomInfoBlock">
 
                     
-                    <img className="charImg" alt="Char" src={charImage}/>
+                    <img className="charImg" alt="Char" 
+                    src={charImage}
+                    onError={(e) => {
+                    e.target.onerror = null; // prevent infinite loop
+                    e.target.src = char1;
+                        }}/> 
                     <div className='charDetails'>
                         <h2 className="charName"><b>{charName}</b></h2>
                         <p className="charDesc"> {charDescription}

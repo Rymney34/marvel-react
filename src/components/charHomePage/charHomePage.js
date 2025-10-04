@@ -7,8 +7,8 @@ import {useLocation} from 'react-router-dom';
 
 
 const CharHomePage = () => {
-
      const location = useLocation();
+     
      
     return (
         

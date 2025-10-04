@@ -27,7 +27,13 @@ const AppHeader = () => {
     return(
        <header>
             <div className="logo-block">
-                <p style={{margin: 0}}> <span className="colorChange">Marvel</span> Information portal</p>
+                  <NavLink 
+                        to="/" 
+                        end 
+                    >
+                         <p style={{margin: 0}}> <span className="colorChange">Marvel</span> Information portal</p>
+                    </NavLink>
+               
             </div>
             <div>
                 <p className='nav-bar'>
